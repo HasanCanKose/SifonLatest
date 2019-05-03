@@ -43,10 +43,6 @@ public class CanvasScript : MonoBehaviour
         {
             movementControl = GameObject.Find("Player").GetComponent<PlayerMovementControl>();
         }
-        if (playerInput.KButtonDown())
-        {
-            playerStats.Health += 5;
-        }
 
         playerCurrentHealth = playerStats.Health;
         playerCurrentPosition = movementControl.transform.position;
@@ -99,11 +95,11 @@ public class CanvasScript : MonoBehaviour
         {
             if (!menuPanel.gameObject.activeInHierarchy)
             {
-                menuPanel.gameObject.SetActive(true);
+                menuPanel.gameObject.SetActive(true);               
             }
             else
             {
-                menuPanel.gameObject.SetActive(false);
+                menuPanel.gameObject.SetActive(false);                
             }
         }
     }

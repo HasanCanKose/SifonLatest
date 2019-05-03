@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CrowFood : MonoBehaviour
 {
+    private PlayerStats playerStats;
     void Start()
     {
-        
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
     
     void Update()
     {
+        
         
     }
 
@@ -19,6 +21,8 @@ public class CrowFood : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             Destroy(gameObject, 0.2f);
+            playerStats.Score += 5;
+
         }
     }
 }
