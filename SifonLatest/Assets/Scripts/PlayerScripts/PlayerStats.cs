@@ -14,7 +14,6 @@ public class PlayerStats : MonoBehaviour
         Health = player.PlayerHealth;
         Name = player.PlayerName;
         Score = 0;
-
     }
 
 }
