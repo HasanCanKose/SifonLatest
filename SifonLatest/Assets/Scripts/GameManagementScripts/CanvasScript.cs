@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CanvasScript : MonoBehaviour
 {
@@ -119,5 +120,7 @@ public class CanvasScript : MonoBehaviour
         transform.Find("ScoreText").gameObject.GetComponent<Text>().text = playerStats.Score.ToString();
 
     }
+
+    
 
 }
