@@ -20,7 +20,7 @@ public class PlayerMovementControl : MonoBehaviour
     private float playerMovementSpeed = 100f;
     private bool isGrounded = false;
     private bool canDoubleJump = false;
-    private const float groundedRadius = .2f;
+    private const float groundedRadius = .1f;
     private const float jumpForce  = 400f;
 
     void Start()
@@ -56,6 +56,7 @@ public class PlayerMovementControl : MonoBehaviour
         else if (!isGrounded && canDoubleJump && playerInput.JumpButtonDown())
         {
             canDoubleJump = false;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
         }
 
