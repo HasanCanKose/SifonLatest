@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    
 
-    //Singleton: oyunda tek bir tane GameMaster objesi olmasinin garanti altina alinmasi
+    //Oyunda tek bir tane GameMaster objesi olmasinin garanti altina alinmasi
     private void Awake()
     {
         if(instance == null)
@@ -18,6 +18,17 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+
     }
 
+
+    private void Update()
+    {
+        //oyunu resetleme
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SceneManager.LoadScene("Scene001");
+        }
+    }
 }
