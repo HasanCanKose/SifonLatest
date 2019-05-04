@@ -13,14 +13,12 @@ public class PlayerMovementControl : MonoBehaviour
     private PlayerInput playerInput;
     
     private Rigidbody2D rb;
-    private Vector2 playerMovementVector;
-    private Collider2D colliders;
 
     private float playerHorizontalMovement;
     private float playerMovementSpeed = 100f;
     private bool isGrounded = false;
     private bool canDoubleJump = false;
-    private const float groundedRadius = .2f;
+    private const float groundedRadius = .1f;
     private const float jumpForce  = 400f;
 
     void Start()
@@ -56,6 +54,7 @@ public class PlayerMovementControl : MonoBehaviour
         else if (!isGrounded && canDoubleJump && playerInput.JumpButtonDown())
         {
             canDoubleJump = false;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
         }
 
@@ -76,13 +75,11 @@ public class PlayerMovementControl : MonoBehaviour
     //karakterin carpisma dedektoru kullanarak yakin oldugu yuzeyin yer olup olmadigini kontrol etmesi
     private void CheckGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        RaycastHit2D r2d = Physics2D.Raycast(transform.position, Vector2.down, 0.2f, whatIsGround);
+
+        if (r2d)
         {
-            if (colliders[i].gameObject != gameObject)
-            {             
-                isGrounded = true;
-            }
+            isGrounded = true;
         }
     }
 }
